@@ -1,17 +1,16 @@
 
-
-
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Components } from '../../../components';
-
-import cls from "../../../assets/styles/login/Login.module.scss";
-
-import Logo from "../../../assets/images/logo/insta.png";
 import { FormsValidate } from '../../../helpers/forms';
 import { REQUEST } from '../../../api';
+import useLocations from '../../../hooks/useLocations';
+
+import cls from "../../../assets/styles/login/Login.module.scss";
+import Logo from "../../../assets/images/logo/insta.png";
 
 export default function Login() {
+  const { goToHome } = useLocations();
 
   const{
     register,
@@ -29,6 +28,7 @@ export default function Login() {
 
             localStorage.setItem("access", data.access);
             localStorage.setItem("refresh", data.refresh);
+            goToHome();
           })
     } 
   };
